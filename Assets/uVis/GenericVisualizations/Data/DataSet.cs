@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace UVis
@@ -73,6 +74,18 @@ namespace UVis
         public int IndexOf(DataDimension dimension)
         {
             return _dimensions.IndexOf(dimension);
+        }
+        /// <summary>
+        /// Gets the index of the specified data dimension within the data set.
+        /// </summary>
+        /// <param name="dimensionName">The data dimension name for which the index should be got.</param>
+        /// <returns>The index of the specified dimension or -1 if the dimension is not part of the data set.</returns>
+        public int IndexOf(string dimensionName)
+        {
+            foreach (var dimension in _dimensions.Select((v, i) => new { Key = i, Value = v }))
+                if (dimension.Value.Name == dimensionName)
+                    return dimension.Key;
+            return -1;
         }
         #endregion
 
