@@ -35,6 +35,7 @@ namespace UVis
         private float _axisLabelOffset= 0.1f;
         private Vector3 _invCanvasScale = Vector3.one;
 
+        private MeshFilter _meshFilter;
 
         #region Public Properties
         public AxisPresenter AxisPresenter
@@ -68,6 +69,9 @@ namespace UVis
 
         public void RebuildAxis(AxisTick[] ticks, string axisLabel = null)
         {
+            if (_meshFilter == null)
+                _meshFilter = GetComponent<MeshFilter>();
+
             var canvasScale = _labelCanvas.transform.localScale;
             _invCanvasScale = new Vector3(1.0f / canvasScale.x, 1.0f / canvasScale.y, 1.0f / canvasScale.z);
 
@@ -87,8 +91,9 @@ namespace UVis
             }
             if (_hasAxisLabel)
                 CreateAxisLabel(axisLabel);
-            var meshFilter = GetComponent<MeshFilter>();
-            meshFilter.sharedMesh = iMesh.GenerateMesh("AxisTicksMesh", MeshTopology.Lines);
+
+            GameObject.Destroy(_meshFilter.sharedMesh);
+            _meshFilter.sharedMesh = iMesh.GenerateMesh("AxisTicksMesh", MeshTopology.Lines);
         }
 
         private void CreateAxisLabel(string axisLabel)
