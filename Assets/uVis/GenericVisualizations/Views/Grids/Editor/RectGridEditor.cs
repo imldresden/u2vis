@@ -9,7 +9,7 @@ using UnityEngine;
 namespace UVis.InfoVis
 {
     [CustomEditor(typeof(RectGrid))]
-    public class GridEditor : Editor
+    public class RectGridEditor : Editor
     {
         SerializedProperty size_prop, spacing_prop;
         RectGrid _grid = null;
