@@ -97,8 +97,8 @@ namespace UVis
 
         protected virtual void Provider_DataUpdated(object sender, EventArgs e)
         {
-            if (_highlightedItems.Length != _dataProvider.Data.Count)
-                _highlightedItems = new bool[_dataProvider.Data.Count];
+            if (_highlightedItems.Length != _dataProvider.Data.NumOfItems)
+                _highlightedItems = new bool[_dataProvider.Data.NumOfItems];
             //TODO: Check dataSet dimensions, items count, etc.
             DataUpdated?.Invoke(this, new DataPresenterEventArgs(_selectedMinItem, _selectedMaxItem));
         }
