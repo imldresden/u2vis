@@ -138,7 +138,7 @@
 			FS_OUTPUT FS_Main(FS_INPUT input)
 			{
 				FS_OUTPUT o;
-				o.color = _Color;
+				o.color = tex2D(_MainTex, input.tex0.xy) * input.color * _Color;
 				return o;
 			}
 
