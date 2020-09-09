@@ -110,6 +110,22 @@ namespace UVis
             _needsRecalcMinMaxValues = true;
         }
 
+        public override void UpdateOn(int index, object value)
+        {
+            if (!(_values.Count > index))
+                return;
+
+            if (!(value is float))
+                throw new ArgumentException("FloatDimension error: Updated value is not of type float!");
+            UpdateOn(index, (float)value);
+        }
+
+        public void UpdateOn(int index, float value)
+        {
+            _values[index] = value;
+            _needsRecalcMinMaxValues = true;
+        }
+
         public override IEnumerator GetEnumerator()
         {
             return new FloatDimensionEnumerator(this);

@@ -105,6 +105,21 @@ namespace UVis
             _values.Add(value);
         }
 
+        public override void UpdateOn(int index, object value)
+        {
+            if (!(_values.Count > index))
+                return;
+
+            if (!(value is int))
+                throw new ArgumentException("IntegerDimension error: Updated value is not of type int!");
+            UpdateOn(index, (int)value);
+        }
+
+        public void UpdateOn(int index, int value)
+        {
+            _values[index] = value;
+        }
+
         public override IEnumerator GetEnumerator()
         {
             throw new NotImplementedException();
