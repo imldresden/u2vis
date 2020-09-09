@@ -13,8 +13,10 @@
 			Pass
 			{
 				Name "Onscreen geometry"
-				Tags { "RenderType" = "Transparent" }
-				//Zwrite On
+				Tags { 
+					"RenderType" = "Transparent" 
+				}
+				Zwrite On
 				//ZTest LEqual
 				//Blend[_MySrcMode][_MyDstMode]
 				Cull Off
@@ -27,6 +29,7 @@
 					#pragma vertex VS_Main
 					#pragma fragment FS_Main
 					#pragma geometry GS_Main
+					#include "UnityCG.cginc"
 
 
 			// **************************************************************
@@ -38,6 +41,7 @@
 				float4 color: COLOR;
 				float3 normal: NORMAL;
 				float4 _MainTex : TEXCOORD0; // index, vertex size, filtered, prev size
+				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
 
 			struct GS_INPUT
@@ -46,6 +50,8 @@
 				float2  tex0 : TEXCOORD0;
 				float4  color : COLOR;
 				float3  normal : NORMAL;
+				UNITY_VERTEX_INPUT_INSTANCE_ID
+				UNITY_VERTEX_OUTPUT_STEREO
 			};
 
 			struct FS_INPUT
@@ -53,6 +59,7 @@
 				float4	pos : POSITION;
 				float2  tex0 : TEXCOORD0;
 				float4  color : COLOR;
+				UNITY_VERTEX_OUTPUT_STEREO
 			};
 
 			struct FS_OUTPUT
@@ -79,6 +86,10 @@
 			{
 				GS_INPUT output;
 
+				UNITY_SETUP_INSTANCE_ID(v);
+				UNITY_INITIALIZE_OUTPUT(GS_INPUT, output);					
+				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(output);
+
 				output.pos = v.position;
 				output.tex0 = v._MainTex;
 				output.color = v.color;
@@ -88,29 +99,38 @@
 			}
 
 			// Geometry Shader -----------------------------------------------------
-			[maxvertexcount(8)]
+			[maxvertexcount(4)]
 			void GS_Main(line GS_INPUT p[2], inout TriangleStream<FS_INPUT> triStream)
 			{
+				UNITY_SETUP_INSTANCE_ID(p[0]);
+				UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(p[0]);
+				UNITY_SETUP_INSTANCE_ID(p[1]);
+				UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(p[1]);
+
 				float3 l = (p[1].pos - p[0].pos);
-				float4 d = float4(normalize(cross(l, p[0].normal)) * _Size * 0.5f, 1.0f);
+				float4 d = float4(normalize(cross(l, p[0].normal)) * _Size * 0.5f, 1);
 				FS_INPUT pIn;
 
 				pIn.color = p[0].color;
 				pIn.pos = UnityObjectToClipPos(p[0].pos - d);
 				pIn.tex0 = float2(1.0f, 0.0f);
+				UNITY_TRANSFER_VERTEX_OUTPUT_STEREO(p[0], pIn);
 				triStream.Append(pIn);
 
 				pIn.pos = UnityObjectToClipPos(p[0].pos + d);
 				pIn.tex0 = float2(0.0f, 0.0f);
+				UNITY_TRANSFER_VERTEX_OUTPUT_STEREO(p[0], pIn);
 				triStream.Append(pIn);
 
 				pIn.color = p[1].color;
 				pIn.pos = UnityObjectToClipPos(p[1].pos - d);
 				pIn.tex0 = float2(1.0f, 1.0f);
+				UNITY_TRANSFER_VERTEX_OUTPUT_STEREO(p[1], pIn);
 				triStream.Append(pIn);
 
 				pIn.pos = UnityObjectToClipPos(p[1].pos + d);
 				pIn.tex0 = float2(0.0f, 1.0f);
+				UNITY_TRANSFER_VERTEX_OUTPUT_STEREO(p[1], pIn);
 				triStream.Append(pIn);
 			}
 
@@ -124,5 +144,5 @@
 
 			ENDCG
 		} // end pass
-		}
+	}
 }
