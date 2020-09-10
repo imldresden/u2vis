@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UVis.NodeLink
+namespace u2vis.NodeLink
 {
     public class BaseNodePresenter
     {

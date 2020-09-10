@@ -4,7 +4,7 @@ using Lean.Touch;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace UVis.Input
+namespace u2vis.Input
 {
     public class ButtonEx : UiElement
     {

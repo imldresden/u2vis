@@ -1,7 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-namespace UVis.InfoVis
+namespace u2vis.InfoVis
 {
     [CustomEditor(typeof(PieChart3D))]
     public class PieChart3DEditor : BaseVisualizationViewEditor

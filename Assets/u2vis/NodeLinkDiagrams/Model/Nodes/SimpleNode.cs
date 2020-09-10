@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace UVis.NodeLink
+namespace u2vis.NodeLink
 {
     public class SimpleNode: INode
     {

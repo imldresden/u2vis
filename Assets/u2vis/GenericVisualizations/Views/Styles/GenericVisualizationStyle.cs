@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace UVis
+namespace u2vis
 {
     public class GenericVisualizationStyle : MonoBehaviour
     {

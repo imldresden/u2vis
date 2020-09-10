@@ -1,6 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 
-namespace UVis.NodeLink
+namespace u2vis.NodeLink
 {
     public interface IGraph<Node, Edge>
         where Node : class, INode

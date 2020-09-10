@@ -1,4 +1,4 @@
-﻿namespace UVis.NodeLink
+﻿namespace u2vis.NodeLink
 {
     public interface IEdge<Node> where Node: class, INode
     {

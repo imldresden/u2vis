@@ -1,7 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-namespace UVis.InfoVis
+namespace u2vis.InfoVis
 {
     [CustomEditor(typeof(StackedBar))]
     public class StackedBarEditor : BaseVisualizationViewEditor

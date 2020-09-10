@@ -2,7 +2,7 @@
 using System.Globalization;
 using UnityEngine;
 
-namespace UVis
+namespace u2vis
 {
     [Serializable]
     public class AxisPresenter

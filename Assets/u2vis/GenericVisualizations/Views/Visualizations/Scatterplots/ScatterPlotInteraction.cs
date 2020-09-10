@@ -1,9 +1,9 @@
-﻿using UVis;
+﻿using u2vis;
 using Lean.Touch;
 using System;
 using UnityEngine;
 
-namespace UVis.ARGH
+namespace u2vis.ARGH
 {
     public class ScatterPlotInteraction : BaseVisualizationInteraction
     {

@@ -1,4 +1,4 @@
-﻿namespace UVis
+﻿namespace u2vis
 {
     public enum LabelOrientation : int
     {

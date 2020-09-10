@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace UVis.NodeLink
+namespace u2vis.NodeLink
 {
     public class NodeTemplate : MonoBehaviour
     {

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace UVis
+namespace u2vis
 {
     public class DataSet : IEnumerable<DataDimension>
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace UVis.Input
+namespace u2vis.Input
 {
     public abstract class UiElement : MonoBehaviour, IUiElement
     {

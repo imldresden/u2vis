@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace UVis
+namespace u2vis
 {
     public abstract class BaseVisualizationView : MonoBehaviour
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace UVis
+namespace u2vis
 {
     public delegate void HighlightChangedHandler(GenericDataPresenter sender, int itemIndex);
     public class GenericDataPresenter : MonoBehaviour

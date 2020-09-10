@@ -37,7 +37,7 @@ An Interface for the Point Class.
 */
 using UnityEngine;
 
-namespace UVis.NodeLink
+namespace u2vis.NodeLink
 {
     public class PointFD
     {

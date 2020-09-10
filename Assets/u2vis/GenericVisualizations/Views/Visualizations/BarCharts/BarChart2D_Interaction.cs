@@ -1,7 +1,7 @@
 ﻿using Lean.Touch;
 using UnityEngine;
 
-namespace UVis
+namespace u2vis
 {
     public class BarChart2D_Interaction : BaseVisualizationInteraction
     {

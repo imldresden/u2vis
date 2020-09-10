@@ -1,8 +1,8 @@
-﻿using UVis.Utilities;
+﻿using u2vis.Utilities;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace UVis
+namespace u2vis
 {
     public class RevolvedCharts : BaseVisualizationView
     {

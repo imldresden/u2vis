@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using UnityEngine;
 
-namespace UVis.NodeLink
+namespace u2vis.NodeLink
 {
 
     public class SimpleGraphPresenter : MonoBehaviour

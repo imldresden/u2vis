@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace UVis.NodeLink
+namespace u2vis.NodeLink
 {
     public class SimpleGraph<Node, Edge> : IGraph<Node, Edge> where Node: class, INode where Edge: class, IEdge<Node>  
     {

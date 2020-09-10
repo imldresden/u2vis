@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace UVis.Utilities
+namespace u2vis.Utilities
 {
     public class IntermediateMesh
     {

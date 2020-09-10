@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using UVis.Utilities;
+using u2vis.Utilities;
 
-namespace UVis
+namespace u2vis
 {
     public class LineChart3D : BaseVisualizationView
     {

@@ -1,4 +1,4 @@
-﻿namespace UVis.NodeLink
+﻿namespace u2vis.NodeLink
 {
     public interface IGraphProvider<Node, Edge, Graph>
         where Node : class, INode

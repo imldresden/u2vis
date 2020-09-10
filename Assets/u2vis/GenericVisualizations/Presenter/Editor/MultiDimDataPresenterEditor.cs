@@ -1,7 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-namespace UVis.InfoVis
+namespace u2vis.InfoVis
 {
     [CustomEditor(typeof(MultiDimDataPresenter))]
     public class MultiDimDataPresenterEditor : GenericDataPresenterEditor

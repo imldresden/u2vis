@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace UVis.Input
+namespace u2vis.Input
 {
-    public sealed class AugDispInputModule : MonoBehaviour
+    public sealed class u2visInputModule : MonoBehaviour
     {
         private Dictionary<IUiElement, List<LeanFinger>> _touchesByElement = new Dictionary<IUiElement, List<LeanFinger>>();
 

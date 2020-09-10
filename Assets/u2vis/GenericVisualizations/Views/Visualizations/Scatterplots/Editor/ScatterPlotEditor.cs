@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEditor;
 
-namespace UVis.InfoVis
+namespace u2vis.InfoVis
 {
     [CustomEditor(typeof(Scatterplot2D))]
     public class ScatterPlotEditor : BaseVisualizationViewEditor

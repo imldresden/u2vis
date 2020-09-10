@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace UVis
+namespace u2vis
 {
     // TODO implement create by code
     public class StandAloneAxis : MonoBehaviour

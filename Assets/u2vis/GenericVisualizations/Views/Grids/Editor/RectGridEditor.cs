@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using UnityEditor;
 using UnityEngine;
 
-namespace UVis.InfoVis
+namespace u2vis.InfoVis
 {
     [CustomEditor(typeof(RectGrid))]
     public class RectGridEditor : Editor

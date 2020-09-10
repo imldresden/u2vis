@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace UVis
+namespace u2vis
 {
     [Serializable]
     public class IntegerDimension : DataDimension, INumericalDimension

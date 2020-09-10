@@ -1,8 +1,8 @@
-﻿using UVis.Input;
+﻿using u2vis.Input;
 using Lean.Touch;
 using UnityEngine;
 
-namespace UVis
+namespace u2vis
 {
     public class LinkGroupInteraction : UiElement
     {

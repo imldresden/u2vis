@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace UVis.NodeLink
+namespace u2vis.NodeLink
 {
     public delegate void NodeInteractionHandler(object sender, BaseNodePresenter node, int button);
     public class ChunkedGraphPresenter : MonoBehaviour

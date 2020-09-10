@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
-using UVis.Utilities;
+using u2vis.Utilities;
 
-namespace UVis
+namespace u2vis
 {
     public class Heightmap : BaseVisualizationView
     {

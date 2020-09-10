@@ -1,7 +1,7 @@
 ﻿using Lean.Touch;
 using UnityEngine;
 
-namespace UVis.Input
+namespace u2vis.Input
 {
     public interface IUiElement
     {

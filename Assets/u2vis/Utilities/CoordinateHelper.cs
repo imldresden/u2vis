@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace UVis.Utilities
+namespace u2vis.Utilities
 {
     public static class CoordinateHelper
     {

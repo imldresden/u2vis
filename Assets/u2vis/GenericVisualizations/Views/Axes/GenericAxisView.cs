@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UVis.Utilities;
+using u2vis.Utilities;
 
-namespace UVis
+namespace u2vis
 {
     public class GenericAxisView : MonoBehaviour
     {

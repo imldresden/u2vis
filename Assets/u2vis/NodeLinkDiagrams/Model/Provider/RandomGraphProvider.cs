@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace UVis.NodeLink
+namespace u2vis.NodeLink
 {
     public class RandomGraphProvider : BaseGraphProviderComponent
     {

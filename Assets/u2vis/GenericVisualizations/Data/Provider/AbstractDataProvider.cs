@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace UVis
+namespace u2vis
 {
     /// <summary>
     /// Inherit from MonoBehaviour to use DataProviders in the Editor

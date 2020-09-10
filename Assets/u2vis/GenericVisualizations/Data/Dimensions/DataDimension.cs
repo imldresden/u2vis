@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace UVis
+namespace u2vis
 {
     [Serializable]
     public abstract class DataDimension : IEnumerable

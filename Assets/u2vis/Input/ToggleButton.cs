@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-namespace UVis.Input
+namespace u2vis.Input
 {
     public class ToggleButton : UiElement
     {

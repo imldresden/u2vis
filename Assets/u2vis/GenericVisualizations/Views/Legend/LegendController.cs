@@ -1,9 +1,9 @@
-﻿using UVis;
+﻿using u2vis;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace UVis
+namespace u2vis
 {
     public class LegendController : MonoBehaviour
     {

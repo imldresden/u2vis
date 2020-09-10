@@ -4,7 +4,7 @@ using System.Linq;
 using Lean.Touch;
 using UnityEngine;
 
-namespace UVis.NodeLink
+namespace u2vis.NodeLink
 {
     public delegate void DefaultInteractionHanlder(object sender, UnityEngine.Vector3 positon, int button);
     public abstract class BaseGraphView : Input.UiElement

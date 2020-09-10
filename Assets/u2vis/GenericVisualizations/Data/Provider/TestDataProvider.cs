@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace UVis
+namespace u2vis
 {
     public class TestDataProvider : AbstractDataProvider
     {

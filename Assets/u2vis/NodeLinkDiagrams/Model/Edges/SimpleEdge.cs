@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace UVis.NodeLink
+namespace u2vis.NodeLink
 {
     public class SimpleEdge<Node> : IEdge<Node> where Node : class, INode
     {

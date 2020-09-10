@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace UVis
+namespace u2vis
 {
     public class BarChart3D_Interaction : BaseVisualizationInteraction
     {
