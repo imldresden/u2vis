@@ -62,6 +62,8 @@ namespace UVis
 
         public void Set(int index, string value)
         {
+            if (index < 0 || index >= _values.Count)
+                throw new IndexOutOfRangeException("StringDimension error: Index out of Range");
             _values[index] = value;
         }
 
