@@ -103,21 +103,28 @@ namespace UVis
         public void Add(int value)
         {
             _values.Add(value);
+            if (value < _minValue)
+                _minValue = value;
+            else if (value > _maxValue)
+                _maxValue = value;
         }
 
-        public override void UpdateOn(int index, object value)
+        public override void Set(int index, object value)
         {
-            if (!(_values.Count > index))
-                return;
-
             if (!(value is int))
                 throw new ArgumentException("IntegerDimension error: Updated value is not of type int!");
-            UpdateOn(index, (int)value);
+            Set(index, (int)value);
         }
 
-        public void UpdateOn(int index, int value)
+        public void Set(int index, int value)
         {
+            if (index < 0 || index >= _values.Count)
+                throw new IndexOutOfRangeException("IntegerDimension error: Index out of Range");
             _values[index] = value;
+            if (value < _minValue)
+                _minValue = value;
+            else if (value > _maxValue)
+                _maxValue = value;
         }
 
         public override IEnumerator GetEnumerator()

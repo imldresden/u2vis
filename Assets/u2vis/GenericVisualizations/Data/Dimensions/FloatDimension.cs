@@ -107,23 +107,28 @@ namespace UVis
         public void Add(float value)
         {
             _values.Add(value);
-            _needsRecalcMinMaxValues = true;
+            if (value < _minValue)
+                _minValue = value;
+            else if (value > _maxValue)
+                _maxValue = value;
         }
 
-        public override void UpdateOn(int index, object value)
+        public override void Set(int index, object value)
         {
-            if (!(_values.Count > index))
-                return;
-
             if (!(value is float))
                 throw new ArgumentException("FloatDimension error: Updated value is not of type float!");
-            UpdateOn(index, (float)value);
+            Set(index, (float)value);
         }
 
-        public void UpdateOn(int index, float value)
+        public void Set(int index, float value)
         {
+            if (index < 0 || index >= _values.Count)
+                throw new IndexOutOfRangeException("FloatDimension error: Index out of Range");
             _values[index] = value;
-            _needsRecalcMinMaxValues = true;
+            if (value < _minValue)
+                _minValue = value;
+            else if (value > _maxValue)
+                _maxValue = value;
         }
 
         public override IEnumerator GetEnumerator()

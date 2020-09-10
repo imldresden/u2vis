@@ -53,17 +53,14 @@ namespace UVis
             _values.Add(value);
         }
 
-        public override void UpdateOn(int index, object value)
+        public override void Set(int index, object value)
         {
-            if (!(_values.Count > index))
-                return;
-
             if (!(value is string))
                 throw new ArgumentException("StringDimension error: Updated value is not of type string!");
-            UpdateOn(index, (string)value);
+            Set(index, (string)value);
         }
 
-        public void UpdateOn(int index, string value)
+        public void Set(int index, string value)
         {
             _values[index] = value;
         }

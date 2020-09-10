@@ -53,7 +53,7 @@ namespace UVis
 
         public abstract void Add(object value);
 
-        public abstract void UpdateOn(int index, object value);
+        public abstract void Set(int index, object value);
 
         public abstract IEnumerator GetEnumerator();
         #endregion

@@ -69,18 +69,17 @@ namespace UVis
             _values.Add(value);
         }
 
-        public override void UpdateOn(int index, object value)
+        public override void Set(int index, object value)
         {
-            if (!(_values.Count > index))
-                return;
-
             if (!(value is bool))
-                throw new ArgumentException("BoolDimension error: Updated value is not of type bool!");
-            UpdateOn(index, (bool)value);
+                throw new ArgumentException("BoolDimension error: Updated value is not of type boolean!");
+            Set(index, (bool)value);
         }
 
-        public void UpdateOn(int index, bool value)
+        public void Set(int index, bool value)
         {
+            if (index < 0 || index >= _values.Count)
+                throw new IndexOutOfRangeException("BooleanDimension error: Index out of Range");
             _values[index] = value;
         }
 
