@@ -1,5 +1,8 @@
 ﻿namespace u2vis
 {
+    /// <summary>
+    /// All data types a DataDimension can contain.
+    /// </summary>
     public enum DataType
     {
         Undefinded,
