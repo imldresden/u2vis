@@ -2,17 +2,30 @@
 
 namespace u2vis
 {
+    /// <summary>
+    /// DataProvider that generates some randomized values that can be used for test purposes.
+    /// </summary>
     public class TestDataProvider : AbstractDataProvider
     {
+        /// <summary>
+        /// The DataSet of this data provider.
+        /// </summary>
         private DataSet _data = null;
-
+        /// <summary>
+        /// Gets the DataSet which this DataProvider provides.
+        /// </summary>
         public override DataSet Data => _data;
-
+        /// <summary>
+        /// Creates a new instance of the TestDataProvider class.
+        /// </summary>
         public TestDataProvider()
         {
             _data = CreateTestData();
         }
-
+        /// <summary>
+        /// Creates the radomized test DataSet of this provider.
+        /// </summary>
+        /// <returns>The resulting DataSet.</returns>
         public DataSet CreateTestData()
         {
             Random r = new Random();
@@ -32,7 +45,9 @@ namespace u2vis
 
             return data;
         }
-
+        /// <summary>
+        /// Initializes this TestDataProvider by creating the test DataSet.
+        /// </summary>
         public void Initialize()
         {
             _data = CreateTestData();
