@@ -3,20 +3,80 @@ using UnityEngine;
 
 namespace u2vis
 {
+    /// <summary>
+    /// Class which represents a rectangular grid which can be used for visualizations.
+    /// </summary>
     public class RectGrid : MonoBehaviour
     {
+        #region Private Fields
+        /// <summary>
+        /// The size of the grid.
+        /// </summary>
         [SerializeField]
         private Vector2 _size = Vector2.one;
+        /// <summary>
+        /// The spacing between horizontal and vertical grid lines.
+        /// </summary>
         [SerializeField]
         private Vector2 _spacing = Vector2.one;
+        /// <summary>
+        /// Indicates if the grid geometry needs rebuilding.
+        /// </summary>
+        private bool _needsRebuild = true;
+        #endregion
 
+        #region Public Properties
+        /// <summary>
+        /// The size of the grid.
+        /// </summary>
+        public Vector2 Size
+        {
+            get { return _size; }
+            set
+            {
+                _size = value;
+                _needsRebuild = true;
+            }
+        }
+        /// <summary>
+        /// The spacing between horizontal and vertical grid lines.
+        /// </summary>
+        public Vector2 Spacing
+        {
+            get { return _spacing; }
+            set
+            {
+                _spacing = value;
+                _needsRebuild = true;
+            }
+        }
+        #endregion
+
+        #region Private Methods
+        /// <summary>
+        /// Called by Unity once at the start of this script.
+        /// </summary>
         private void Start()
         {
-            RebuildGridGeometry();
         }
+        /// <summary>
+        /// Called by Unity every frame.
+        /// </summary>
+        private void Update()
+        {
+            if (_needsRebuild)
+                RebuildGridGeometry();
+        }
+        #endregion
 
+        #region Public Methods
+        /// <summary>
+        /// Rebuild the geometry of this grid.
+        /// </summary>
         public void RebuildGridGeometry()
         {
+            _needsRebuild = false;
+
             if (_spacing.x == 0)
                 _spacing.x = 0.01f;
             if (_spacing.y == 0)
@@ -46,5 +106,6 @@ namespace u2vis
             mesh.SetIndices(indices.ToArray(), MeshTopology.Lines, 0);
             GetComponent<MeshFilter>().sharedMesh = mesh;
         }
+        #endregion
     }
 }
