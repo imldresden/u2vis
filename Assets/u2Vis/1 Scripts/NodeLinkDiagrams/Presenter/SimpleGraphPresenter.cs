@@ -1,0 +1,135 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using UnityEngine;
+
+namespace u2vis.NodeLink
+{
+
+    public class SimpleGraphPresenter : MonoBehaviour
+    {
+        [SerializeField]
+        private BaseGraphProviderComponent _graphProvider = null;
+        [SerializeField]
+        private BaseGraphView _graphViewPrefab = null;
+        [SerializeField]
+        private NodeTemplate _nodeTemplate = null;
+        [SerializeField]
+        private EdgeTemplate _edgeTemplate = null;
+
+        private BaseGraphView _graphView = null;
+        private IGraph<INode, IEdge<INode>> _graphModel = null;
+        private List<BaseNodePresenter> _nodePresenters = null;
+        private List<BaseEdgePresenter> _edgePresenters = null;
+        public ReadOnlyCollection<BaseNodePresenter> NodePresenters { get; }
+        public ReadOnlyCollection<BaseEdgePresenter> EdgePresenters { get; }
+
+        public SimpleGraphPresenter()
+        {
+            _nodePresenters = new List<BaseNodePresenter>();
+            _edgePresenters = new List<BaseEdgePresenter>();
+            NodePresenters = new ReadOnlyCollection<BaseNodePresenter>(_nodePresenters);
+            EdgePresenters = new ReadOnlyCollection<BaseEdgePresenter>(_edgePresenters);
+        }
+
+        private void Start()
+        {
+            Debug.Log("Called Start");
+            _graphModel = _graphProvider.GetGraph();
+            var nps = new Dictionary<INode, BaseNodePresenter>();
+            foreach (var node in _graphModel.Nodes)
+            {
+                var np = new BaseNodePresenter(node);
+                np.Size *= _nodeTemplate.Scale;
+                _nodePresenters.Add(np);
+                nps.Add(node, np);
+            }
+            foreach (var edge in _graphModel.Edges)
+            {
+                var source = nps[edge.Source];
+                var target = nps[edge.Target];
+                var ep = new BaseEdgePresenter(edge, source, target);
+                ep.Width *= _edgeTemplate.Scale;
+                _edgePresenters.Add(ep);
+            }
+
+            _graphView = Instantiate(_graphViewPrefab, transform, false);
+            _graphView.MouseDown += GraphView_MouseDown;
+            _graphView.MouseMove += GraphView_MouseMove;
+            _graphView.MouseUp += GraphView_MouseUp;
+            _graphView.NodeTemplate = _nodeTemplate;
+            _graphView.SetGraph(NodePresenters, EdgePresenters);
+        }
+
+        public  BaseNodePresenter IDToNode(int nodeID)
+        {
+            foreach (var node in _nodePresenters)
+            {
+                if (node.Uid == nodeID)
+                {
+                    return node;
+                }
+            }
+            return null;
+        }
+
+        private BaseNodePresenter _interactedNode;
+
+        //events for Interaction
+        public event NodeInteractionHandler NodeMouseDown;
+        public event NodeInteractionHandler NodeMouseMove;
+        public event NodeInteractionHandler NodeMouseUp;
+        private void GraphView_MouseDown(object sender, Vector3 position,int button)
+        {
+            //find which node is interacted with
+            foreach(var node in _nodePresenters)
+            {
+                var sqMag = (this.transform.TransformPoint(node.Position) - position).sqrMagnitude;
+                var sqRad = node.Size * node.Size;
+                if (sqMag < sqRad)
+                {
+                    Debug.Log("Node hit! " + this.transform.TransformPoint(node.Position) + " Button used: " + button);
+                    _interactedNode = node;
+                    Node_MouseDown(_interactedNode,button);
+                    break;
+                }
+            }
+        }
+
+        public void Node_MouseDown(BaseNodePresenter node, int button)
+        {
+            if (NodeMouseDown != null)
+                NodeMouseDown(this, node, button);
+        }
+
+        private void GraphView_MouseMove(object sender, Vector3 position, int button)
+        {
+            if (_interactedNode == null)
+                return;
+            _interactedNode.Position = this.transform.InverseTransformPoint(position);
+            _graphView.UpdateNodes(UpdateNodeInfo<BaseNodePresenter>.UpdateNodes(_interactedNode));
+            Node_MouseMove(_interactedNode, button);
+        }
+        public void Node_MouseMove(BaseNodePresenter node, int button)
+        {
+            if (NodeMouseMove != null)
+                NodeMouseMove(this, node, button);
+        }
+        private void GraphView_MouseUp(object sender, Vector3 position, int button)
+        {
+            if (_interactedNode == null)
+                return;
+          //  _interactedNode.Position = this.transform.InverseTransformPoint(position);
+            _graphView.UpdateNodes(UpdateNodeInfo<BaseNodePresenter>.UpdateNodes(_interactedNode));
+            Node_MouseUp(_interactedNode, button);
+            _interactedNode = null;
+
+        }
+
+        private void Node_MouseUp(BaseNodePresenter node, int button)
+        {
+            if (NodeMouseUp != null)
+                NodeMouseUp(this, node, button);
+        }
+    }
+}
