@@ -8,7 +8,7 @@ namespace DataSetHandling
     /// </summary>
     public enum DataType
     {
-        Undefinded,
+        Undefined,
         Boolean,
         Integer,
         Float,
@@ -43,7 +43,7 @@ namespace DataSetHandling
             }
             catch
             {
-                return DataType.Undefinded;
+                return DataType.Undefined;
             }
         }
 

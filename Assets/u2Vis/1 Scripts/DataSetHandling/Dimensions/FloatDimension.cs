@@ -201,7 +201,7 @@ namespace DataSetHandling
         /// Set the item at the specified index to the specified value.
         /// </summary>
         /// <param name="index">The index at which the value should be set.</param>
-        /// <param name="value">the value that should be set.</param>
+        /// <param name="value">The value that should be set.</param>
         public override void Set(int index, object value)
         {
             if (!(value is float))
@@ -226,9 +226,9 @@ namespace DataSetHandling
         }
 
         /// <summary>
-        /// Created a new instance of the DataDimension with an subset of rows than the original.
+        /// Creates a new instance of the DataDimension with an subset of rows than the original.
         /// </summary>
-        /// <param name="rowIndex">The indicies of the rows to be present in the new DataDimension oject.</param>
+        /// <param name="rowIndex">The indices of the rows to be present in the new DataDimension oject.</param>
         /// <returns>The DataDimension with a smaller subset.</returns>
         public override DataDimension GenerateSubSetDataDimension(params int[] rowIndices)
         {

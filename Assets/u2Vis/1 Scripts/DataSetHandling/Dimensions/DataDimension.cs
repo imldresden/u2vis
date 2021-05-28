@@ -19,7 +19,7 @@ namespace DataSetHandling
         /// <summary>
         /// The type of data stored on this data dimension.
         /// </summary>
-        protected DataType _dataType = DataType.Undefinded;
+        protected DataType _dataType = DataType.Undefined;
         #endregion
 
         #region Public Properties

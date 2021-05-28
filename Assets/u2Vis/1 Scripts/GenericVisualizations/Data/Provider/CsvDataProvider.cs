@@ -140,7 +140,7 @@ namespace u2vis
             {
                 var fields = lines[l].Trim().Split(_seperator);
                 string caption = fields[0].Trim();
-                DataType dataType = DataType.Undefinded;
+                DataType dataType = DataType.Undefined;
                 if (_seconFieldContainesDataType)
                     dataType = (DataType)Enum.Parse(typeof(DataType), fields[1].Trim());
                 else
@@ -191,7 +191,7 @@ namespace u2vis
             for (int i = 0; i < line0.Length; i++)
             {
                 string caption = line0[i].Trim();
-                DataType dataType = DataType.Undefinded;
+                DataType dataType = DataType.Undefined;
                 if (_seconFieldContainesDataType)
                     dataType = (DataType)Enum.Parse(typeof(DataType), line1[i].Trim());
                 else

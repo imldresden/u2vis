@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace DataSetHandling
 {
+    /// <summary>
+    /// Represents a single data object with different datadimension.
+    /// </summary>
     public class DataObject
     {        
         #region Private Fields
@@ -37,7 +40,7 @@ namespace DataSetHandling
 
         #region Constructor
         /// <summary>
-        /// Creates a new instance of the DataSet class.
+        /// Creates a new instance of the DataObject class.
         /// </summary>
         public DataObject()
         {
@@ -47,7 +50,7 @@ namespace DataSetHandling
         /// <summary>
         /// Creates a new instance of the DataSet class.
         /// </summary>
-        /// <param name="dimensions">An array of DataDimesions this dataset consists of.</param>
+        /// <param name="dimensions">An array of DataDimesions this DataObject consists of.</param>
         public DataObject(params DataDimension[] dimensions)
         {
             _dimensions = dimensions.ToDictionary(v => v.Name, v => v);
@@ -56,7 +59,7 @@ namespace DataSetHandling
 
         #region Public Methods
         /// <summary>
-        /// Add a new data dimension to this data set.
+        /// Add a new data dimension to this data object.
         /// </summary>
         /// <param name="dimension">The data dimension that should be added.</param>
         public void Add(DataDimension dimension)
@@ -67,7 +70,7 @@ namespace DataSetHandling
         }
 
         /// <summary>
-        /// Removes a data dimension from the data set.
+        /// Removes a data dimension from the data object.
         /// </summary>
         /// <param name="dimension">The data dimension which should be removed.</param>
         /// <returns>true if the dimension was removed, otherwiese false.</returns>

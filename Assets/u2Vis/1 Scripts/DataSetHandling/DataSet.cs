@@ -91,7 +91,7 @@ namespace DataSetHandling
         /// Removes a data dimension from the data set.
         /// </summary>
         /// <param name="dimension">The data dimension which should be removed.</param>
-        /// <returns>true if the dimension was removed, otherwiese false.</returns>
+        /// <returns>true if the dimension was removed, otherwise false.</returns>
         public bool Remove(DataDimension dimension)
         {
             return _dimensions.Remove(dimension);
@@ -125,7 +125,7 @@ namespace DataSetHandling
         /// Searches for the dimension with the given name.
         /// </summary>
         /// <param name="dimensionName">The name of the dimension to search for.</param>
-        /// <returns>The dimension with the given name. null if no dimension was found. </returns>
+        /// <returns>The dimension with the given name. null if no dimension was found.</returns>
         public DataDimension GetDimension(string dimensionName)
         {
             foreach (var dimension in _dimensions.Select((v, i) => new { Key = i, Value = v }))
@@ -139,7 +139,13 @@ namespace DataSetHandling
         /// </summary>
         /// <param name="rowIndex">The index the data object should be created from.</param>
         /// <returns>The DataObject instance.</returns>
-        public DataObject GetDataObject(int rowIndex) => new DataObject(_dimensions.Select(dd => dd.GenerateSubSetDataDimension(rowIndex)).ToArray());
+        public DataObject GetDataObject(int rowIndex)
+        {
+            if (rowIndex > NumOfItems)
+                return null;
+            return new DataObject(_dimensions.Select(dd => dd.GenerateSubSetDataDimension(rowIndex)).ToArray());
+
+        }
         #endregion
 
         #region IEnumarable
@@ -149,7 +155,7 @@ namespace DataSetHandling
         /// <returns>the new Enumerator.</returns>
         public IEnumerator<DataDimension> GetEnumerator()
         {
-            throw new NotImplementedException();
+            return _dimensions.GetEnumerator();
         }
 
         /// <summary>
